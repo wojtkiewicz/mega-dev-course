@@ -3,7 +3,7 @@ Repo needed for mega.dev course.
 
 ## S01E03 · date causes in #4471
 
-- [KB page source (`.svx`)](kb/incidents/4471-causes/+page.svx)
+- [KB page source (`.svx`)](src/routes/kb/incidents/4471-causes/+page.svx)
 - [Rendered HTML snapshot](kb/incidents/4471-causes.html)
 - [Rendered page preview](kb/incidents/4471-causes.png)
 - [Parser issue · 379 reports](https://github.com/wojtkiewicz/mega-dev-course/issues/1)
