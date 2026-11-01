@@ -1,0 +1,42 @@
+---
+layout: runbook
+title: '4471 · two date-entry causes'
+owner: support desk
+status: known
+reviewed: 2026-11-01
+signature: wojtkiewicz
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+Ticket [#4471](/kb/incidents/4471) is not one failure repeated. Its reports describe two different
+causes, so they need separate engineering issues.
+
+## Parser: month-first parsing
+
+The shared parser reads dates month first. Tenants whose locale writes day first can therefore get
+the month and day swapped. This cause appears in reports from the app, email, and form channels.
+
+## Hint: booking form format mismatch
+
+The `booking-v3` form displays `MM/DD/YYYY` to people in day-first locales. Reports from that form
+belong to a separate hint problem: the displayed format conflicts with the date convention those
+tenants use.
+
+## Classification and counts
+
+The table applies the tenant locale and booking form rules to the merged reports. It removes
+duplicate export rows by report ID; the intake tag is only an initial guess and does not determine
+the cause. The one-day-move notes are evidence within the parser group, not a third cause.
+
+<CauseTable ticket={4471} />
+
+## Engineering issues
+
+- [Shared parser: day-first locale handling](https://github.com/wojtkiewicz/mega-dev-course/issues/1)
+- [Booking-v3: align date hint and interpretation](https://github.com/wojtkiewicz/mega-dev-course/issues/2)
+
+<RenderStamp {signature} />
